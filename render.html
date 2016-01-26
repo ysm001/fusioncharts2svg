@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=">
+    <title></title>
+    <script type="text/javascript" src="../lib/fusioncharts/fusioncharts.js"></script>
+    <script type="text/javascript" src="../lib/fusioncharts/themes/fusioncharts.theme.fint.js"></script>
+  </head>
+  <body>
+    <div id="chartContainer">FusionCharts XT will load here!</div>
+  </body>
+  <script type="text/javascript">
+    window.onload = function() {
+      FusionCharts.ready(function(){
+        var chartJson = env.chartJson;
+        chartJson.renderAt = 'chartContainer';
+        chartJson.dataSource.chart.animation = 0;
+
+        var chart = new FusionCharts(chartJson);
+        chart.addEventListener('renderComplete', function() {
+          window.callPhantom(chart.getSVGString());
+        });
+        chart.render();
+      })
+    }
+  </script>
+</html>
