@@ -10,11 +10,20 @@
     <div id="chartContainer">FusionCharts XT will load here!</div>
   </body>
   <script type="text/javascript">
+    var getChartConfig = function(chartJson) {
+      if (chartJson.chart) {
+        return chartJson.chart;
+      } else if (chartJson.dataSource && chartJson.dataSource.chart) {
+        return chartJson.dataSource.chart;
+      }
+    }
+
     window.onload = function() {
       FusionCharts.ready(function(){
-        var chartJson = env.chartJson;
+        var chartJson = JSON.parse(env.chartJson);
+        var chartConfig = getChartConfig(chartJson);
         chartJson.renderAt = 'chartContainer';
-        chartJson.dataSource.chart.animation = 0;
+        chartConfig.animation = 0;
 
         var chart = new FusionCharts(chartJson);
         chart.addEventListener('renderComplete', function() {

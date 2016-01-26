@@ -37,7 +37,6 @@ function createRenderFile(json) {
 
 function exit(code, tmpFile) {
   if (tmpFile) {
-    fs.remove(tmpFile);
   }
   phantom.exit(code);
 }
@@ -59,4 +58,8 @@ page.open(htmlFile, function(status) {
     console.log(error);
     exit(1, htmlFile);
   }
+
+  page.onConsoleMessage = function(msg, lineNum, sourceId) {
+    console.log('CONSOLE: ' + msg + ' (from line #' + lineNum + ' in "' + sourceId + '")');
+  };
 });
