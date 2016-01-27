@@ -57,7 +57,7 @@ page.open(htmlFile, function(status) {
   }
 
   page.onCallback = function(data) {
-    console.log(data);
+    console.log(JSON.stringify(data));
     exit(0, htmlFile);
   }
 
