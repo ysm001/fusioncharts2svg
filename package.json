@@ -24,6 +24,6 @@
   "homepage": "https://github.com/ysm001/fusioncharts2svg#readme",
   "dependencies": {
     "phantomjs": "^2.1.2"
-  }
+  },
   "bin": "bin/fusioncharts2svg"
 }
