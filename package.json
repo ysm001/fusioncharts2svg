@@ -1,6 +1,6 @@
 {
   "name": "fusioncharts2svg",
-  "version": "0.5.1",
+  "version": "0.5.2",
   "description": "This module enables you to render fusioncharts on server.",
   "main": "./lib/index.js",
   "directories": {
@@ -25,5 +25,5 @@
   "dependencies": {
     "phantomjs": "^2.1.2"
   },
-  "bin": "bin/fusioncharts2svg"
+  "bin": "bin/fusioncharts2svg.js"
 }
