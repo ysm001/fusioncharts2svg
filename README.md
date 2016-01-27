@@ -8,7 +8,7 @@ npm install --save fusioncharts2svg
 ```
 
 ### Running via node
-First, incllude module:
+First, include module:
 
 ```js
 var fc2svg = require('fusioncharts2svg');
@@ -126,7 +126,7 @@ fc2svg.fromFile(<path-to-your-fusioncharts-file>).then((svg) => {
 });
 ```
 
-See also: [examples](https://github.com/ysm001/fusioncharts2svg/examples)
+See also: [examples](https://github.com/ysm001/fusioncharts2svg/tree/master/examples)
 
 #### 3. Running
 You can also run fusioncharts2svg on console.
