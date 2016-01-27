@@ -32,6 +32,10 @@
       FusionCharts.ready(function(){
         var chartJson = JSON.parse(env.chartJson);
         var chartConfig = getChartConfig(chartJson);
+        if (!chartConfig) {
+          returnResult({result: false, error: {type: 'invaliddataformat'}});
+        }
+
         chartJson.renderAt = 'chartContainer';
         chartConfig.animation = 0;
 
