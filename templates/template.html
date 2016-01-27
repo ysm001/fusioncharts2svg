@@ -18,7 +18,17 @@
       }
     }
 
-    window.onload = function() {
+    var returnResult = function(result) {
+      window.callPhantom(result);
+    }
+
+    var onError = function(errorEvent) {
+      returnResult({result: false, error: {type: errorEvent.eventType}});
+    }
+
+    var errorEvents = ['noDataToDisplay', 'dataInvalid', 'dataLoadRequestCancelled', 'dataLoadCancelled', 'dataLoadError'];
+
+    window.addEventListener('load', function() {
       FusionCharts.ready(function(){
         var chartJson = JSON.parse(env.chartJson);
         var chartConfig = getChartConfig(chartJson);
@@ -27,10 +37,15 @@
 
         var chart = new FusionCharts(chartJson);
         chart.addEventListener('renderComplete', function() {
-          window.callPhantom(chart.getSVGString());
+          returnResult({result: true, svg: chart.getSVGString()});
         });
+
+        errorEvents.forEach(function(event) {
+          chart.addEventListener(event, onError);
+        });
+
         chart.render();
       })
-    }
+    });
   </script>
 </html>
