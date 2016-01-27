@@ -1,5 +1,5 @@
 {
-  "name": "fushioncharts2svg",
+  "name": "fusioncharts2svg",
   "version": "0.5.0",
   "description": "This module enables you to render fusioncharts on server.",
   "main": "./lib/index.js",
