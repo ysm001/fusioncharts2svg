@@ -12,7 +12,7 @@ if (system.args.length !== 2) {
 const dataSource = fs.read(system.args[1])
 
 function readRenderFile() {
-  return fs.read('./render.html');
+  return fs.read('./templates/template.html');
 }
 
 function replaceChartContent(content, json) {
@@ -20,7 +20,7 @@ function replaceChartContent(content, json) {
 }
 
 function writeToTmpFile(content) {
-  const tmpDir = './tmp'
+  const tmpDir = './tmp';
   const fileName = tmpDir + '/' + Date.now() + '.html';
 
   fs.makeDirectory(tmpDir);
@@ -37,7 +37,9 @@ function createRenderFile(json) {
 
 function exit(code, tmpFile) {
   if (tmpFile) {
+    fs.remove(tmpFile);
   }
+
   phantom.exit(code);
 }
 
