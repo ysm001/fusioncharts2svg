@@ -3,6 +3,7 @@
 const page = require('webpage').create();
 const system = require('system');
 const fs = require('fs');
+const stderr = system.stderr;
 const rootPath = phantom.libraryPath + '/../';
 
 if (system.args.length !== 2) {
@@ -57,12 +58,13 @@ page.open(htmlFile, function(status) {
   }
 
   page.onCallback = function(data) {
-    console.log(JSON.stringify(data));
-    exit(0, htmlFile);
+    const error = !data.result;
+    error ? stderr.write(JSON.stringify(data.error)) : console.log(data.svg);
+    exit(error, htmlFile);
   }
 
   page.onError = function(error) {
-    console.log(error);
+    stderr.write(error);
     exit(1, htmlFile);
   }
 
