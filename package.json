@@ -14,7 +14,7 @@
     "url": "git+https://github.com/ysm001/fusioncharts2svg.git"
   },
   "keywords": [
-    "fusioncharts"
+    "fusioncharts", "node", "svg", "image"
   ],
   "author": "ysm001",
   "license": "ISC",
