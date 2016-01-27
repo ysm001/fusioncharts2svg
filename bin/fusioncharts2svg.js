@@ -3,16 +3,17 @@
 const page = require('webpage').create();
 const system = require('system');
 const fs = require('fs');
+const rootPath = phantom.libraryPath + '/../';
 
 if (system.args.length !== 2) {
   console.log('Usage: ' + system.args[0] + ' datasource-json-file');
   phantom.exit(1);
 }
 
-const dataSource = fs.read(system.args[1])
+const dataSource = fs.read(system.args[1]);
 
 function readRenderFile() {
-  return fs.read('./templates/template.html');
+  return fs.read(rootPath + '/templates/template.html');
 }
 
 function replaceChartContent(content, json) {
@@ -20,13 +21,13 @@ function replaceChartContent(content, json) {
 }
 
 function writeToTmpFile(content) {
-  const tmpDir = './tmp';
-  const fileName = tmpDir + '/' + Date.now() + '.html';
+  const tmpDir = rootPath + '/tmp';
+  const filePath = tmpDir + '/' + Date.now() + '.html';
 
   fs.makeDirectory(tmpDir);
-  fs.write(fileName, content, 'w');
+  fs.write(filePath, content, 'w');
 
-  return fileName;
+  return filePath;
 }
 
 function createRenderFile(json) {
@@ -43,7 +44,11 @@ function exit(code, tmpFile) {
   phantom.exit(code);
 }
 
-const htmlFile = createRenderFile(dataSource);
+try {
+  const htmlFile = createRenderFile(dataSource);
+} catch(error) {
+  exit(1);
+};
 
 page.open(htmlFile, function(status) {
   if (status === 'fail') {

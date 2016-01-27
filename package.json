@@ -1,6 +1,6 @@
 {
   "name": "fusioncharts2svg",
-  "version": "0.5.2",
+  "version": "0.5.6",
   "description": "This module enables you to render fusioncharts on server.",
   "main": "./lib/index.js",
   "directories": {
@@ -17,7 +17,7 @@
     "fusioncharts", "node", "svg", "image"
   ],
   "author": "ysm001",
-  "license": "ISC",
+  "license": "Apache-2.0",
   "bugs": {
     "url": "https://github.com/ysm001/fusioncharts2svg/issues"
   },
