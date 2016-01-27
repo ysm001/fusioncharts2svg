@@ -1,6 +1,6 @@
 {
   "name": "fusioncharts2svg",
-  "version": "0.5.9",
+  "version": "0.6.0",
   "description": "This module enables you to render fusioncharts on server.",
   "main": "./lib/index.js",
   "directories": {
