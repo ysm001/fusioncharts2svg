@@ -11,8 +11,6 @@ if (system.args.length !== 2) {
   phantom.exit(1);
 }
 
-const dataSource = fs.read(system.args[1]);
-
 function readRenderFile() {
   return fs.read(rootPath + '/templates/template.html');
 }
@@ -46,8 +44,10 @@ function exit(code, tmpFile) {
 }
 
 try {
+  const dataSource = fs.read(system.args[1]);
   const htmlFile = createRenderFile(dataSource);
 } catch(error) {
+  stderr.write(error);
   exit(1);
 };
 
